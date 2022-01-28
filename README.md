@@ -14,10 +14,33 @@ The APIs used from parcelLab:
 * /orders/bot?customerEmail=<email_address>
 * /orders/bot?orderNo=<order_number>
 * /v2/tracking-details/?courier=<courier>&tno=<trackingNumber>
+
+# Integration Overiew
   
-# Sample Responses
+![Integration Overview](/assets/parcelLab%20Integration%20Architecture.jpg)
   
-  **All Orders of a Customer with Courier and Tracking data**
+# To run this App in your local machine
+
+**Prerequisites**
+  - You need to have NodeJS and NPM installed in your local machine.
+  - You need API Token and User ID for your parcelLab tenant
+  
+
+**Steps to run this App in your local**
+```  
+1. Clone this repo in your local machine
+2. Update the API Token and User ID in the variables *parcelLabToken* and *parcelLabUserId*
+3. node src/app.js
+```
+# Sample Request / Response
+  
+  **1. All Orders of a Customer with Courier and Tracking data**
+  
+  **Request**
+  ```
+  curl --location --request GET 'localhost:8080/ParcelEmail?Email=ben.schmith@hotmailed.com'
+  ```
+  **Response**
   ```
   {
     "root": [
@@ -47,18 +70,15 @@ The APIs used from parcelLab:
 }
   ```
   
-  **Order CheckPoint details that's shown in Timeline**
+  **2. Order CheckPoint details that's shown in Timeline**
+  
+  **Request**
+   ```
+  > curl --location --request GET 'localhost:8080/Parcel?orderNo=9000000398'
+  ```
+  **Response**
   ```
   [
-    {
-        "location": "",
-        "timestamp": "2022-01-23T19:11:47.994Z",
-        "status": "OrderProcessed",
-        "status_text": "Order processed",
-        "status_details": "The order has been processed.",
-        "shown": false,
-        "full_courier_status": "If exists, date of order, else date of import to parcelLab"
-    },
     {
         "shown": true,
         "location": "Granges",
@@ -68,6 +88,16 @@ The APIs used from parcelLab:
         "status_details": "The goods have been sent.",
         "full_courier_status": "Shipment Pickup",
         "created": "2022-01-22T19:11:47.994Z"
+    },
+    {
+        "shown": false,
+        "location": "Schlieren",
+        "timestamp": "2022-01-22T22:08:52.994Z",
+        "status": "InTransit",
+        "status_text": "In transit",
+        "status_details": "The goods are on the way.",
+        "full_courier_status": "Processed at Location",
+        "created": "2022-01-23T00:24:36.994Z"
     }
   ]
   ```
