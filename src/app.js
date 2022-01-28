@@ -148,7 +148,6 @@ async function getOrders(email) {
 
 //.. To get the CheckPoint Data from parcelLab for an Order
 async function getOrderCheckPoints(OrderID) {
-    console.log(OrderID);
     try {
         var res = await axios({
             method: "get",
@@ -159,7 +158,6 @@ async function getOrderCheckPoints(OrderID) {
             },
             json: true,
         });
-        console.log(res.data);
         return res.data;
     } catch (e) {
         console.log(e);
