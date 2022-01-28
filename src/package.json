@@ -1,0 +1,22 @@
+{
+  "name": "parcellab",
+  "version": "1.0.0",
+  "description": "A proxy app that acts as an middleware between front-end app and parcelLab APIs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "parcelLab",
+    "Demo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "random-datetime": "^1.0.1",
+    "request": "^2.88.2"
+  }
+}

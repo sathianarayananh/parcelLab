@@ -1,0 +1,9 @@
+---
+    applications:
+    - name: parcelLab_API_Proxy
+      host: parcellab-api-proxy
+      path: src
+      memory: 128M
+      disk_quota: 256M
+      buildpack: nodejs_buildpack
+      command: node ./app.js
